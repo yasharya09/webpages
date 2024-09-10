@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teacher's Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .project-box, .announcement-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .project-link, .post-button {
+            display: block;
+            width: fit-content;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .project-link:hover, .post-button:hover {
+            background-color: #0056b3;
+        }
+        .announcement {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        #announcement-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="header">
+        <h1>Teacher's Dashboard</h1>
+        <div>
+            <a href="/supervisors/teachersprofile.html" style="margin-right: 20px;">Profile</a>
+            <a href="/login.html">Logout</a>
+        </div>
+    </div>
+
+    <div class="project-box">
+        <h2>Projects</h2>
+        <a href="/project.html" class="project-link">Project</a>
+    </div>
+
+    <div class="announcement-box">
+        <h2>Announcements</h2>
+        <textarea id="announcement-input" placeholder="Type your announcement here..."></textarea>
+        <button class="post-button" onclick="postAnnouncement()">Post Announcement</button>
+        <div id="announcements-container"></div>
+    </div>
+
+    <script>
+        const announcementsContainer = document.getElementById('announcements-container');
+        const announcementInput = document.getElementById('announcement-input');
+
+        // Check for saved announcements in localStorage
+        const savedAnnouncements = JSON.parse(localStorage.getItem('announcements')) || [];
+        savedAnnouncements.forEach(announcement => {
+            displayAnnouncement(announcement);
+        });
+
+        function postAnnouncement() {
+            const userId = prompt("Enter User ID:");
+            const password = prompt("Enter Password:");
+
+            // Check credentials for admin2 only
+            if (userId === 'admin2' && password === 'password') {
+                const announcementText = announcementInput.value.trim();
+                if (announcementText) {
+                    const announcement = { text: announcementText };
+                    savedAnnouncements.push(announcement);
+                    localStorage.setItem('announcements', JSON.stringify(savedAnnouncements));
+                    displayAnnouncement(announcement);
+                    announcementInput.value = ''; // Clear input
+                } else {
+                    alert('Please enter a message.');
+                }
+            } else {
+                alert('Invalid credentials or you do not have permission to post.');
+            }
+        }
+
+        function displayAnnouncement(announcement) {
+            const announcementDiv = document.createElement('div');
+            announcementDiv.className = 'announcement';
+            announcementDiv.textContent = announcement.text;
+            announcementsContainer.appendChild(announcementDiv);
+        }
+    </script>
+
+</body>
+</html>

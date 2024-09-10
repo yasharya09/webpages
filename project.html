@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            height: 30px;
+            background-color: #007bff;
+            width: 0; /* Initial width */
+            transition: width 0.5s; /* Smooth transition */
+        }
+        .task {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .task h2 {
+            margin-top: 0;
+        }
+        .task button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .task button:hover {
+            background-color: #0056b3;
+        }
+        .task a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .task a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Project Dashboard</h1>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Task 1 -->
+    <div class="task">
+        <h2>Task 1</h2>
+        <a href="/tasks/task1.html">Go to Task 1 Form</a>
+        <button onclick="completeTask(1)">Mark Task 1 Completed</button>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task">
+        <h2>Task 2</h2>
+        <a href="/tasks/task2.html">Go to Task 2 Form</a>
+        <button onclick="completeTask(2)">Mark Task 2 Completed</button>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task">
+        <h2>Task 3</h2>
+        <a href="/tasks/task3.html">Go to Task 3 Form</a>
+        <button onclick="completeTask(3)">Mark Task 3 Completed</button>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="task">
+        <h2>Task 4</h2>
+        <a href="/tasks/task4.html">Go to Task 4 Form</a>
+        <button onclick="completeTask(4)">Mark Task 4 Completed</button>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="task">
+        <h2>Task 5</h2>
+        <a href="/tasks/task5.html">Go to Task 5 Form</a>
+        <button onclick="completeTask(5)">Mark Task 5 Completed</button>
+    </div>
+
+    <script>
+        const totalTasks = 5; // Total number of tasks
+        let completedTasks = 0; // Count of completed tasks
+
+        function updateProgressBar() {
+            const progressPercentage = (completedTasks / totalTasks) * 100;
+            document.getElementById('progressBar').style.width = progressPercentage + '%';
+        }
+
+        function completeTask(taskNumber) {
+            // Increment completed tasks and update progress bar
+            completedTasks++;
+            updateProgressBar();
+            alert(`Task ${taskNumber} marked as completed! Progress updated.`);
+        }
+
+        // Initialize the progress bar
+        updateProgressBar();
+    </script>
+
+</body>
+</html>

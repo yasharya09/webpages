@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>students Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+        .nav a {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background-color: #0056b3;
+        }
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>student's Dashboard</h1>
+    </div>
+
+    <!-- Navigation Section -->
+    <div class="nav">
+        <a href="studentsprofile.html">Profile</a>
+        <a href="/login.html">Logout</a>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="main-container">
+
+        <!-- Announcement Section -->
+        <div class="section">
+            <h2>Announcement</h2>
+            <p>Check out the latest announcements.</p>
+            <a href="announcement.html">View Announcements</a>
+        </div>
+
+        <!-- Task Section -->
+        <div class="section">
+            <h2>Tasks</h2>
+            <p>View and manage your tasks here.</p>
+            <a href="/project.html">Go to Tasks</a>
+        </div>
+
+    </div>
+</body>
+</html>
